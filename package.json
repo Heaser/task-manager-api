@@ -4,10 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "runmongo": "E:/Dev/nodejs/mongodb/bin/mongod.exe --dbpath E:/Dev/nodejs/mongodb-data",
     "start": "node src/index.js",
+    "test": "env-cmd -f ./config/test.env jest --watch --runInBand",
+    "testopenhandles": "env-cmd -f ./config/test.env jest --detectOpenHandles",
     "dev": "env-cmd -f ./config/dev.env nodemon src/index.js"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true
   },
   "keywords": [],
   "author": "",
@@ -25,6 +30,8 @@
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
-    "nodemon": "^2.0.3"
+    "jest": "^25.5.1",
+    "nodemon": "^2.0.3",
+    "supertest": "^4.0.2"
   }
 }
